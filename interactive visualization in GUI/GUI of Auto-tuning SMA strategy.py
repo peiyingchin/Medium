@@ -213,7 +213,7 @@ def backtest_strategy(data,capital):
     # get summarize of total portfolio value, return by date, benchmark_index
     total_port_value = pd.DataFrame(df_init.groupby([df_init.index])['Total_value_todate'].sum())
     total_port_value['Return_without_trailing'] = total_port_value['Total_value_todate']/total_port_value['Total_value_todate'].iloc[0] *100
-    total_port_value['Return_trailing_12m'] = total_port_value['Total_value_todate']/total_port_value['Total_value_todate'].shift(12)*100
+    total_port_value['Return_trailing_12m'] = total_port_value['Total_value_todate']/total_port_value['Total_value_todate'].shift(252)*100
 
     return total_port_value, df_init
 # annualized return 
